@@ -56,6 +56,9 @@ public class Inventario {
                         realizarVenta();
                         break;
                     case 5:
+                    	//Aqui iria la opcion de generar factura
+                    	break;
+                    case 6:
                         System.out.println("Saliendo del programa...");
                         break;
                     default:
