@@ -89,9 +89,11 @@ class Venta extends Producto {
         this.fechaVenta = fechaVenta;
         this.cantidad = cantidad;
         this.gananciasVenta = gananciasVenta;
-    }
+        
+    
+	}
 
-    public LocalDate getFechaVenta() {
+	public LocalDate getFechaVenta() {
         return fechaVenta;
     }
 
@@ -115,8 +117,9 @@ class Venta extends Producto {
         this.gananciasVenta = gananciasVenta;
     }
 
-
+	
 	}
+
 	
 	class Factura extends Producto {
 		private static final Factura[] factura = null;
@@ -153,4 +156,3 @@ class Venta extends Producto {
 			this.getUnidades();
 		}
 	}
-	
