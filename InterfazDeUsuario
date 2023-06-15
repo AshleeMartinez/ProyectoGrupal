@@ -1,0 +1,127 @@
+package Proyecto;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+public class InterfazDeUsuario extends JFrame {
+
+	private JPanel Login;
+	private JPasswordField pass;
+	private JTextField txtNombre;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InterfazDeUsuario frame = new InterfazDeUsuario();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public InterfazDeUsuario() {
+		setForeground(new Color(106, 168, 223));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 546, 467);
+		Login = new JPanel();
+		Login.setBackground(new Color(106, 168, 223));
+		Login.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(Login);
+		Login.setLayout(null);
+		
+		JLabel txtTitulo = new JLabel("Bienvenido! ");
+		txtTitulo.setFont(new Font("Perpetua Titling MT", Font.BOLD, 18));
+		txtTitulo.setBounds(198, 10, 147, 57);
+		Login.add(txtTitulo);
+		
+		JLabel txtTitulo2 = new JLabel("Accede a tu cuenta ");
+		txtTitulo2.setFont(new Font("Times New Roman", Font.ITALIC, 15));
+		txtTitulo2.setBounds(198, 47, 129, 13);
+		Login.add(txtTitulo2);
+		
+		pass = new JPasswordField();
+		pass.setBounds(185, 283, 191, 19);
+		Login.add(pass);
+		
+		setTxtNombre(new JTextField());
+		getTxtNombre().setBounds(185, 229, 191, 19);
+		Login.add(getTxtNombre());
+		getTxtNombre().setColumns(10);
+		
+		JLabel Nombre = new JLabel("Nombre:");
+		Nombre.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		Nombre.setBounds(103, 231, 72, 13);
+		Login.add(Nombre);
+		
+		JLabel Contra = new JLabel("Contraseña:");
+		Contra.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		Contra.setBounds(87, 286, 88, 13);
+		Login.add(Contra);
+		
+		JButton btnLogeo = new JButton("Logeate!");
+		btnLogeo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				char[] contra=pass.getPassword();
+				String contraFinal= new String(contra);
+				
+				if(txtNombre.getText().equals("Ashlee") && contraFinal.equals("123")) {
+					
+				dispose();
+				
+				JOptionPane.showMessageDialog(null, "Bienvenido al Sistema ", "Ingresaste", JOptionPane.INFORMATION_MESSAGE);
+				
+				Main_Interfaz Ventana= new Main_Interfaz();
+				Ventana.setVisible(true);
+				
+				} else{
+					JOptionPane.showMessageDialog(null, "Error, usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+					txtNombre.setText("");
+					pass.setText("");
+					txtNombre.requestFocus();				
+					}
+			}	
+		});
+		btnLogeo.setFont(new Font("Verdana", Font.BOLD, 15));
+		btnLogeo.setBounds(198, 360, 130, 21);
+		Login.add(btnLogeo);
+		
+		setTitle("Login del Usuario ");
+		setResizable(false);
+		setLocationRelativeTo(null);
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+}
+
